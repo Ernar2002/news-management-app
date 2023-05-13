@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:15.1-alpine
+    container_name: postgresql
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: strongteam-news
+    ports:
+      - '5412:5436'
+    volumes:
+      - ./.data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  sgo-erp:
+    image: 'strong-team-news:1.0.0-SNAPSHOT'
+    build: .
+    container_name: sgo-erp-test
+    restart: always
+    ports:
+      - "8002:8002"
+    volumes:
+      - .:/app
+    networks:
+      - backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+networks:
+  backend:
+    driver: bridge
