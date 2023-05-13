@@ -2,6 +2,7 @@ package kz.strongteam.strongteamnews.models;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "topics")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Topic extends BaseModel {
 
     private String name;

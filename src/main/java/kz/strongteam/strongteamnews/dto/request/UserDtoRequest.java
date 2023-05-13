@@ -2,11 +2,10 @@ package kz.strongteam.strongteamnews.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public record UserDtoRequest (
         String email,
-        String firstName,
-        String lastName,
+        String first_name,
+        String last_name,
         String password
 ) {
 }
