@@ -25,7 +25,6 @@ springdoc:
   swagger-ui:
     disable-swagger-default-url: true
     config-url: /v1/api-docs
-    path: /swagger-ui.html
   api-docs:
     path: /v1/api-docs
     enabled: true
