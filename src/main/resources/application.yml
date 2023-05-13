@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5412/strongteam-news
+    username: postgres
+    password: 123
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
+
+jwt:
+  token:
+    secret:
+      key: b2b1f22cfcfd764d54388b855bdabdf7edfe03c09f3a2c08ecd412f529da9c6d
+    validity: 10080
+
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    config-url: /v1/api-docs
+    path: /swagger-ui.html
+  api-docs:
+    path: /v1/api-docs
+    enabled: true
