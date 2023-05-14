@@ -3,6 +3,7 @@ package kz.strongteam.strongteamnews.models;
 import kz.strongteam.strongteamnews.models.enums.EActive;
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,6 +19,7 @@ public class BaseModel {
     @CreatedDate
     private Date createdAt = new Date();
 
+    @LastModifiedDate
     private Date updatedAt = new Date();
 
     @Enumerated(EnumType.STRING)
