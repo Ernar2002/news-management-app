@@ -1,6 +1,7 @@
 package kz.strongteam.strongteamnews.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import kz.strongteam.strongteamnews.dto.request.NewsDtoRequest;
 import kz.strongteam.strongteamnews.dto.response.NewsDtoResponse;
 import kz.strongteam.strongteamnews.services.interfaces.NewsService;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "/api/v1/news/", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class NewsController {
 
     private final NewsService newsService;
