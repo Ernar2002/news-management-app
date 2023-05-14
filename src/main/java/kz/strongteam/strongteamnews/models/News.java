@@ -18,11 +18,11 @@ public class News extends BaseModel {
 
     private String content;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "source_id", nullable = false)
     private Source source;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @JoinColumn(name = "topic_id", nullable = false)
     private Topic topic;
 }

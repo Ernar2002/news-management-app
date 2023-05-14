@@ -5,7 +5,6 @@ import kz.strongteam.strongteamnews.dto.request.NewsDtoRequest;
 import kz.strongteam.strongteamnews.dto.response.NewsDtoResponse;
 import kz.strongteam.strongteamnews.services.interfaces.NewsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;

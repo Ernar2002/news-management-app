@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public class NewsServiceImpl implements NewsService {
     public NewsDtoResponse getById(UUID id) {
         return newsRepository.findById(id)
                 .map(newsDtoMapper)
-                .orElseThrow(()-> new NotFoundException(String.format("News with given id: {}", id  + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("News with given id: {}", id + " not found!")));
     }
 
     @Override
@@ -85,6 +86,7 @@ public class NewsServiceImpl implements NewsService {
             newsFromDb.setTopic(topic);
         }
 
+        newsFromDb.setUpdatedAt(new Date());
         newsFromDb = newsRepository.save(newsFromDb);
 
         return newsDtoMapper.apply(newsFromDb);
@@ -92,7 +94,11 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public void delete(UUID id) {
-        newsRepository.deleteById(id);
+        try {
+            newsRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new NotFoundException(String.format("News with given id: {}", id + " not found!"));
+        }
     }
 
     @Override
@@ -111,18 +117,18 @@ public class NewsServiceImpl implements NewsService {
                 .collect(Collectors.toList());
     }
 
-    private News getNews(UUID id){
+    private News getNews(UUID id) {
         return newsRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException(String.format("News with given id: {}", id + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("News with given id: {}", id + " not found!")));
     }
 
-    private Source getSource(UUID id){
+    private Source getSource(UUID id) {
         return sourceRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException(String.format("Source with given id: {}", id + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("Source with given id: {}", id + " not found!")));
     }
 
-    private Topic getTopic(UUID id){
+    private Topic getTopic(UUID id) {
         return topicRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException(String.format("Topic with given id: {}", id  + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("Topic with given id: {}", id + " not found!")));
     }
 }
