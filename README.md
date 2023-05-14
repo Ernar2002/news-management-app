@@ -37,7 +37,7 @@ Before installing and running the application, make sure you have the following 
 To install and set up the application, follow these steps:
 
 ```shell
-git cline https://github.com/Ernar2002/strongteam-news
+git clone https://github.com/Ernar2002/strongteam-news
 ```
 
 ```shell
