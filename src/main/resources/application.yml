@@ -6,6 +6,9 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+#    url: jdbc:postgresql://localhost:5412/strongteam-news
+#    user: postgres
+#    password: 123
   jpa:
     hibernate:
       ddl-auto: none
