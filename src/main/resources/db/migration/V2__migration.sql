@@ -65,3 +65,8 @@ VALUES
     (gen_random_uuid(), current_timestamp, current_timestamp, 'ACTIVE', 'Environment News', 'Get the latest environment news.', source9_id, topic9_id),
     (gen_random_uuid(), current_timestamp, current_timestamp, 'ACTIVE', 'Travel News', 'Get the latest travel news.', source10_id, topic10_id);
 END $$;
+
+INSERT INTO roles (id, created_at, updated_at, active, name)
+VALUES
+    (gen_random_uuid(), current_timestamp, current_timestamp, 'ACTIVE', 'ROLE_ADMIN'),
+    (gen_random_uuid(), current_timestamp, current_timestamp, 'ACTIVE', 'ROLE_USER');

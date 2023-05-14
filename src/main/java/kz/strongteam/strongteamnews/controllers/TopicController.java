@@ -1,6 +1,7 @@
 package kz.strongteam.strongteamnews.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import kz.strongteam.strongteamnews.dto.request.TopicDtoRequest;
 import kz.strongteam.strongteamnews.dto.response.TopicDtoResponse;
 import kz.strongteam.strongteamnews.services.interfaces.TopicService;
@@ -17,6 +18,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping(value = "/api/v1/topics/", produces = MediaType.APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
+@SecurityRequirement(name = "bearerAuth")
 public class TopicController {
 
     private final TopicService topicService;
