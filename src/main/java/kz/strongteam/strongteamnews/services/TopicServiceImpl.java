@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class TopicServiceImpl implements TopicService {
     public TopicDtoResponse getById(UUID id) {
         return topicRepository.findById(id)
                 .map(topicDtoMapper)
-                .orElseThrow(()-> new NotFoundException(String.format("Topic with given id: {}", id + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("Topic with given id: {}", id + " not found!")));
     }
 
     @Override
@@ -56,6 +57,7 @@ public class TopicServiceImpl implements TopicService {
             topicFromDb.setName(topicDtoRequest.name());
         }
 
+        topicFromDb.setUpdatedAt(new Date());
         topicFromDb = topicRepository.save(topicFromDb);
 
         return topicDtoMapper.apply(topicFromDb);
@@ -63,11 +65,15 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public void delete(UUID id) {
-        topicRepository.deleteById(id);
+        try {
+            topicRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new NotFoundException(String.format("Topic with given id: {}", id + " not found!"));
+        }
     }
 
     private Topic getTopic(UUID id) {
         return topicRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException(String.format("Topic with given id: {}", id + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("Topic with given id: {}", id + " not found!")));
     }
 }
