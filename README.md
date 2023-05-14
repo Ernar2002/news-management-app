@@ -68,8 +68,8 @@ To access the Swagger UI page and explore the API documentation, please follow t
 
 5. To explore a specific API endpoint, follow these steps:
 
-a. Locate the input field labeled "Explore".
+6. Locate the input field labeled "Explore".
 
-b. Enter /v1/api-docs into the input field. This value represents the endpoint you want to explore.
+7. Enter /v1/api-docs into the input field. This value represents the endpoint you want to explore.
 
-c. As you type, the Swagger UI page will automatically filter and display matching endpoints.
+As you type, the Swagger UI page will automatically filter and display matching endpoints.
