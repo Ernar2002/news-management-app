@@ -6,11 +6,12 @@ import kz.strongteam.strongteamnews.exceptions.NotFoundException;
 import kz.strongteam.strongteamnews.mappers.SourceDtoMapper;
 import kz.strongteam.strongteamnews.models.Source;
 import kz.strongteam.strongteamnews.repositories.SourceRepository;
+import kz.strongteam.strongteamnews.services.interfaces.SourceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import kz.strongteam.strongteamnews.services.interfaces.SourceService;
 
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class SourceServiceImpl implements SourceService {
     public SourceDtoResponse getById(UUID id) {
         return sourceRepository.findById(id)
                 .map(sourceDtoMapper)
-                .orElseThrow(()-> new NotFoundException(String.format("Source with given id: {}", id + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("Source with given id: {}", id + " not found!")));
     }
 
     @Override
@@ -61,6 +62,7 @@ public class SourceServiceImpl implements SourceService {
             sourceFromDb.setUrl(sourceDtoRequest.url());
         }
 
+        sourceFromDb.setUpdatedAt(new Date());
         sourceFromDb = sourceRepository.save(sourceFromDb);
 
         return sourceDtoMapper.apply(sourceFromDb);
@@ -68,11 +70,15 @@ public class SourceServiceImpl implements SourceService {
 
     @Override
     public void delete(UUID id) {
-        sourceRepository.deleteById(id);
+        try {
+            sourceRepository.deleteById(id);
+        } catch (Exception e) {
+            throw new NotFoundException(String.format("Source with given id: {}", id + " not found!"));
+        }
     }
 
     private Source getSource(UUID id) {
         return sourceRepository.findById(id)
-                .orElseThrow(()-> new NotFoundException(String.format("Source with given id: {}", id + " not found!")));
+                .orElseThrow(() -> new NotFoundException(String.format("Source with given id: {}", id + " not found!")));
     }
 }
