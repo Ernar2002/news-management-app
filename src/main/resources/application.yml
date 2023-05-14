@@ -18,11 +18,19 @@ spring:
         format_sql: true
     show-sql: false
 
-jwt:
+security:
+  encoder:
+    strength: 8
   token:
-    secret:
-      key: b2b1f22cfcfd764d54388b855bdabdf7edfe03c09f3a2c08ecd412f529da9c6d
-    validity: 10080
+    prefix: Bearer
+    client-ip: strongteam
+    secret: $uper$3KR3T
+    issuer: strongteam
+    audience: strongteam
+    access-expiration-time: 3600
+    refresh-expiration-time: 604800
+    jwt-token-header: Authorization
+    token-cannot-be-verified: token cannot be verified
 
 springdoc:
   swagger-ui:
