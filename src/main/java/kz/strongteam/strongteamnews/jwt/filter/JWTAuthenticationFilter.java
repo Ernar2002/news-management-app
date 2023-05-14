@@ -38,10 +38,6 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         log.info(request.getServletPath());
-        if (securityProperties.contains(request.getServletPath()) || request.getServletPath().contains("/api/v1/provider_requests/send")) {
-            filterChain.doFilter(request, response);
-            return;
-        }
 
         String header = request.getHeader(tokenProperties.getJwtTokenHeader());
         if (Strings.isBlank(header) || !header.startsWith(tokenProperties.getPrefix())) {

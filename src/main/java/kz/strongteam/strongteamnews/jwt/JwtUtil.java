@@ -8,7 +8,6 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import kz.strongteam.strongteamnews.exceptions.BadRequestException;
 import kz.strongteam.strongteamnews.exceptions.UnauthorizedException;
 import kz.strongteam.strongteamnews.models.User;
-import kz.strongteam.strongteamnews.services.interfaces.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -30,7 +29,6 @@ import java.util.List;
 public class JwtUtil {
 
     private TokenProperties tokenProperties;
-    private UserService userService;
 
     public String createJwtToken(User userDetails) {
         checkIfValid(userDetails);
