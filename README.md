@@ -39,10 +39,6 @@ git clone https://github.com/Ernar2002/strongteam-news
 ```
 
 ```shell
-mvn clean install
-```
-
-```shell
 docker compose up --build
 ```
 
