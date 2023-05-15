@@ -5,7 +5,6 @@ This is a readme file for the News Management Application, which is a web-based 
 ## Table of Contents
 
 * Features
-* Prerequisites
 * Installation
 * Endpoints
 * Swagger API Documentation
@@ -22,14 +21,6 @@ This is a readme file for the News Management Application, which is a web-based 
 * Utilizing PostgreSQL as the relational database management system
 * Containerization using Docker for easy deployment and scalability
 * Swagger API documentation for exploring and testing the API endpoints
-
-## Prerequisites
-Before installing and running the application, make sure you have the following prerequisites:
-
-* Java Development Kit (JDK) version 17 or higher
-* Maven build tool
-* Docker (for running the application in a container)
-* PostgreSQL database
 
 ## Installation
 To install and set up the application, follow these steps:
