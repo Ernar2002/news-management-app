@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -39,6 +40,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
+    @Transactional
     public TopicDtoResponse save(TopicDtoRequest topicDtoRequest) {
         Topic topic = Topic.builder()
                 .name(topicDtoRequest.name())
@@ -50,6 +52,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
+    @Transactional
     public TopicDtoResponse update(UUID id, TopicDtoRequest topicDtoRequest) {
         Topic topicFromDb = getTopic(id);
 

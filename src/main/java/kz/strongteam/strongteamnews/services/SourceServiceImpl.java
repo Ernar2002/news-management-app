@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -39,6 +40,7 @@ public class SourceServiceImpl implements SourceService {
     }
 
     @Override
+    @Transactional
     public SourceDtoResponse save(SourceDtoRequest sourceDtoRequest) {
         Source source = Source.builder()
                 .name(sourceDtoRequest.name())
@@ -51,6 +53,7 @@ public class SourceServiceImpl implements SourceService {
     }
 
     @Override
+    @Transactional
     public SourceDtoResponse update(UUID id, SourceDtoRequest sourceDtoRequest) {
         Source sourceFromDb = getSource(id);
 

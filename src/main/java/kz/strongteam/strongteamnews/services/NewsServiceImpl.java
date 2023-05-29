@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -45,6 +46,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    @Transactional
     public NewsDtoResponse save(NewsDtoRequest newsDtoRequest) {
 
         Source source = getSource(newsDtoRequest.source_id());
@@ -64,6 +66,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
+    @Transactional
     public NewsDtoResponse update(UUID id, NewsDtoRequest newsDtoRequest) {
 
         News newsFromDb = getNews(id);
