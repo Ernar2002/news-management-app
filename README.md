@@ -5,10 +5,7 @@ This is a readme file for the News Management Application, which is a web-based 
 ## Table of Contents
 
 * Features
-* Prerequisites
 * Installation
-* Configuration
-* Usage
 * Endpoints
 * Swagger API Documentation
 
@@ -25,23 +22,11 @@ This is a readme file for the News Management Application, which is a web-based 
 * Containerization using Docker for easy deployment and scalability
 * Swagger API documentation for exploring and testing the API endpoints
 
-## Prerequisites
-Before installing and running the application, make sure you have the following prerequisites:
-
-* Java Development Kit (JDK) version 17 or higher
-* Maven build tool
-* Docker (for running the application in a container)
-* PostgreSQL database
-
 ## Installation
 To install and set up the application, follow these steps:
 
 ```shell
-git cline https://github.com/Ernar2002/strongteam-news
-```
-
-```shell
-mvn clean install
+git clone https://github.com/Ernar2002/strongteam-news
 ```
 
 ```shell
@@ -56,3 +41,22 @@ The application will be accessible at http://localhost:8080 in your web browser.
 * `/api/v1/news` - News article management endpoints (GET, POST, PUT, DELETE)
 * `/api/v1/sources` - News source management endpoints (GET, POST, PUT, DELETE)
 * `/api/v1/topics` - News topic management endpoints (GET, POST, PUT, DELETE)
+
+## Swagger API Documentation
+To access the Swagger UI page and explore the API documentation, please follow the steps below:
+
+1. Make sure your application is running locally on your machine.
+
+2. Open your preferred web browser.
+
+3. In the address bar, enter the following URL: http://localhost:8080/swagger-ui.html. Press Enter or Return to navigate to the Swagger UI page.
+
+4. Once the Swagger UI page loads, you will see a search bar and a list of available endpoints.
+
+5. To explore a specific API endpoint, follow these steps:
+
+6. Locate the input field labeled "Explore".
+
+7. Enter /v1/api-docs into the input field. This value represents the endpoint you want to explore.
+
+As you type, the Swagger UI page will automatically filter and display matching endpoints.
